@@ -5,7 +5,7 @@ import { connect } from 'cloudflare:sockets';
 // [Windows] Press "Win + R", input cmd and run:  Powershell -NoExit -Command "[guid]::NewGuid()"
 let userID = 'd342d11e-d424-4583-b36e-524ab1f0afa4';
 
-const พร็อกซีไอพีs = ['cdn.xn--b6gac.eu.org', 'cdn-all.xn--b6gac.eu.org', 'workers.cloudflare.cyou'];
+const พร็อกซีไอพีs = ['172.232.250.227'];
 
 // if you want to use ipv6 or single พร็อกซีไอพี, please add comment at this line and remove comment at the next line
 let พร็อกซีไอพี = พร็อกซีไอพีs[Math.floor(Math.random() * พร็อกซีไอพีs.length)];
@@ -197,12 +197,12 @@ async function วเลสOverWSHandler(request) {
 			}
 
 			// If UDP and not DNS port, close it
-			if (isUDP && portRemote !== 53) {
-				throw new Error('UDP proxy only enabled for DNS which is port 53');
+			if (isUDP && portRemote !== 443) {
+				throw new Error('UDP proxy only enabled for DNS which is port 443');
 				// cf seems has bug, controller.error will not end stream
 			}
 
-			if (isUDP && portRemote === 53) {
+			if (isUDP && portRemote === 443) {
 				isDns = true;
 			}
 
